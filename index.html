@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AXL Key Copy</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    height: 100vh;
+    background: linear-gradient(120deg, #000814, #001d3d, #000814);
+    background-size: 400% 400%;
+    animation: bgMove 10s infinite alternate;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+    overflow: hidden;
+  }
+
+  @keyframes bgMove {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+  }
+
+  .box {
+    text-align: center;
+    padding: 40px 60px;
+    border-radius: 25px;
+    background: rgba(0, 255, 255, 0.08);
+    border: 2px solid rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .key {
+    font-size: 1.8em;
+    color: cyan;
+    font-weight: bold;
+    text-shadow: 0 0 20px cyan, 0 0 40px cyan;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    animation: glowPulse 2s infinite alternate;
+  }
+
+  @keyframes glowPulse {
+    0% { text-shadow: 0 0 10px cyan, 0 0 20px cyan; }
+    100% { text-shadow: 0 0 30px #00ffff, 0 0 60px #00ffff; }
+  }
+
+  .copy-btn {
+    background: linear-gradient(90deg, #00bfff, #00ffff);
+    color: #000;
+    border: none;
+    padding: 12px 28px;
+    font-size: 1em;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 0 20px #00ffff;
+    transition: 0.3s ease;
+    animation: shake 4s infinite;
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(1deg); }
+    50% { transform: rotate(-1deg); }
+    75% { transform: rotate(1deg); }
+  }
+
+  .copy-btn:hover {
+    transform: scale(1.1);
+    background: linear-gradient(90deg, #00ffff, #00bfff);
+    box-shadow: 0 0 30px #00ffff;
+  }
+
+</style>
+</head>
+<body>
+
+  <div class="box">
+    <div class="key" id="keyText">AXL-KEY-12H-g0ubj</div>
+    <button class="copy-btn" onclick="copyKey()">📋 Copy</button>
+  </div>
+
+  <script>
+    function copyKey() {
+      const key = document.getElementById("keyText").textContent;
+      navigator.clipboard.writeText(key);
+      alert("✅ Copied: " + key);
+    }
+  </script>
+
+</body>
+</html>
